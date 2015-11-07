@@ -9,15 +9,15 @@ on/off. Also, you can control the wireless sockets.
 The System
 ----------
 
-This is what a socket and the remote look like.
+This is what a socket and the remote look like.  
 [![Socket and Remote](pics/socket-and-remote.png)](pics/socket-and-remote.png)
 
 
 You can configure the address (aka. system-code) and the identifier (aka.
-unit-code) of your sockets using the DIP switches.
+unit-code) of your sockets using the DIP switches.  
 [![DIP switches of the socket](pics/dip-switches-socket.png)](pics/dip-switches-socket.png)
 
-Don't forget to set the same address on the remote.
+Don't forget to set the same address on the remote.  
 [![DIP switches of the remote](pics/dip-switches-remote.png)](pics/dip-switches-remote.png)
 
 For controlling the sockets, the remote sends out a simple signal modulated using
