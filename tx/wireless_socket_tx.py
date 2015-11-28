@@ -48,7 +48,7 @@ def generate_packet(address, identifier, state, repeat=3):
     else:
       packet.append('01')
 
-  # Generate identifier part of the packet (bit 10 to 17).
+  # Generate identifier part of the packet (bit 10 to 19).
   identifier = identifier.upper()
   if   identifier == 'A':
     packet.append('0001010101')
@@ -61,15 +61,12 @@ def generate_packet(address, identifier, state, repeat=3):
   elif identifier == 'E':
     packet.append('0101010100')
 
-  # Generate state of the packet (bit 20 to 23).
+  # Generate state of the packet (bit 20 to 24).
   state = state.upper()
   if state == 'ON':
-    packet.append('0001')
+    packet.append('00010')
   else:
-    packet.append('0100')
-
-  # Generate static part of the packet (bit 24).
-  packet.append('0')
+    packet.append('01000')
 
   # Return encoded (and repeated) packet.
   return encode_packet(''.join(packet), repeat)
@@ -90,18 +87,6 @@ def encode_packet(packet, repeat=3):
   encoded_packet.extend([0x00] * 24)
   encoded_packet.extend(encoded_packet * repeat)
   return bytes(encoded_packet)
-
-
-def packets_for_all_addresses(identifier, state):
-  """
-  Create a list of packages for all addresses with the given identifier and state.
-  """
-  packages = []
-  for i in range(0, 32):
-    addr = '{:05b}'.format(i)
-    packages.append(generate_packet(addr, identifier, stat))
-  return packages
-
 
 
 def packet_to_fifo(packet, file_name=FIFO_FILE):
